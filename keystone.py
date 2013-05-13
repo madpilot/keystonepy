@@ -1,6 +1,11 @@
 from ctypes import *
 from ctypes.util import *
 
+# TODO Confirm the DLL names are correct. The documentation says they shouldn't be mangled
+# (they are externed in the source) but they seem to be...
+# Update: This *might* be to do with debug symbols? 
+# http://stackoverflow.com/questions/2804893/c-dll-export-decorated-mangled-names
+
 class Keystone:
   def __init__(self):
     libraries = find_library('keystonecomm') 
@@ -19,10 +24,10 @@ class Keystone:
     return self.keystone._Z13OpenRadioPortPcb(c_char_p(device), usehardmute)
 
   def hard_reset_radio(self):
-    return False
+    return self.keystone._Z14HardResetRadiov()
 
   def is_sys_ready(self):
-    return False
+    return self.keystone._Z10IsSysReadyv()
 
   def close_radio_port(self):
     return self.keystone._Z14CloseRadioPortv()
@@ -34,19 +39,19 @@ class Keystone:
     return self.keystone._Z10PlayStreamcm(c_char_p(mode), c_long(channel))
 
   def stop_stream(self):
-    return False
+    return self.keystone._Z10StopStreamv()
 
   def volumne_plus(self):
-    return
+    return self.keystone._Z10VolumnPlusv()
 
   def volume_minus(self):
-    return
+    return self.keystone._Z11VolumeMinusv()
 
   def volume_mute(self):
-    return
+    self.keystone._Z10VolumeMutev()
 
   def get_volume(self):
-    return
+    return self.keystone._Z9GetVolumev()
 
   def get_play_mode(self):
     return self.keystone._Z11GetPlayModev()

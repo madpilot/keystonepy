@@ -63,10 +63,10 @@ class Keystone:
     return self.keystone._Z15GetTotalProgramv()
   
   def next_stream(self):
-    return False
+    return self.keystone._Z10NextStreamv()
 
   def prev_stream(self):
-    return False
+    return self.keystone._Z10PrevStreamv()
 
   def get_play_index(self):
     return self.keystone._Z12GetPlayIndexv()
@@ -91,17 +91,17 @@ class Keystone:
     else:
       return ""
 
-  def get_present(self):
-    return False
+  def get_preset(self, mode, index):
+    return self.keystone._Z9GetPresetcc(c_char_p(mode), c_char_p(index))
 
-  def set_preset(self):
-    return False
+  def set_preset(self, mode, index, channel):
+    return self.keystone._Z9SetPresetccm(c_char_p(mode), c_char_p(index), c_long(channel))
 
   def dab_auto_search(self, start_index, end_index):
     return self.keystone._Z13DABAutoSearchhh(c_char_p(start_index), c_char_p(end_index))
 
   def dab_auto_search_no_clear(self, start_index, end_index):
-    return False
+    return self.keystone._Z20DABAutoSearchNoClearhh(c_char_p(start_index), c_char_p(end_index))
 
   def get_ensemble_name(self, index, namemode):
     buf = create_unicode_buffer(300)
@@ -120,10 +120,10 @@ class Keystone:
     return self.keystone._Z12GetFrequencyv()
 
   def get_stereo_mode(self):
-    return False
+    return self.keystone._Z13GetStereoModev()
 
   def clear_database(self):
-    return False
+    return self.keystone._Z13ClearDatabasev()
 
   def set_bbeeq(self):
     return False
@@ -131,23 +131,20 @@ class Keystone:
   def get_bbeeq(self):
     return False
 
-  def set_bbeeq(self):
-    return False
-
-  def set_headroom(self):
-    return False
+  def set_headroom(self, headroom):
+    return self.keystone._Z11SetHeadroomc(c_char_p(headroom))
 
   def get_headroom(self):
-    return False
+    return self.keystone._Z11GetHeadroomv()
 
-  def get_application_type(self):
-    return False
+  def get_application_type(self, index):
+    return self.keystone._Z18GetApplicationTypel(c_long(index))
 
   def get_program_info(self):
     return False
 
   def mot_query(self):
-    return False
+    return self.keystone._Z8MotQueryv()
 
   def get_image(self):
     return False
@@ -156,7 +153,7 @@ class Keystone:
     return False
 
   def get_dab_signal_quality(self):
-    return False
+    return self.keystone._Z19GetDABSignalQualityv()
 
 def do_scan(self):
   radiostatus = 0

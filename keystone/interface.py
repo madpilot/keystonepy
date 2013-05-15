@@ -1,10 +1,6 @@
 from ctypes import *
 from ctypes.util import *
-
-# TODO Confirm the DLL names are correct. The documentation says they shouldn't be mangled
-# (they are externed in the source) but they seem to be...
-# Update: This *might* be to do with debug symbols? 
-# http://stackoverflow.com/questions/2804893/c-dll-export-decorated-mangled-names
+from keystone import library_not_installed_error
 
 class Interface:
   def __init__(self):
@@ -13,63 +9,62 @@ class Interface:
       cdll.LoadLibrary(libraries)
       self.keystone = CDLL(libraries)
     else:
-      print "Nope"
-      # TODO: Raise exception
+      raise LibaryNotInstalledError("Couldn't locate libkeystonecomm. Please check it is installed")
 
 
   def comm_version(self):
-    return self.keystone._Z11CommVersionv()
+    return self.keystone.CommVersion()
 
   def open_radio_port(self, device, usehardmute = True):
-    return self.keystone._Z13OpenRadioPortPcb(c_char_p(device), usehardmute)
+    return self.keystone.OpenRadioPort(c_char_p(device), usehardmute)
 
   def hard_reset_radio(self):
-    return self.keystone._Z14HardResetRadiov()
+    return self.keystone.HardResetRadio()
 
   def is_sys_ready(self):
-    return self.keystone._Z10IsSysReadyv()
+    return self.keystone.IsSysReady()
 
   def close_radio_port(self):
-    return self.keystone._Z14CloseRadioPortv()
+    return self.keystone.CloseRadioPort()
 
   def set_volume(self, level):
-    return self.keystone._Z9SetVolumec(c_char_p(level))
+    return self.keystone.SetVolume(c_char_p(level))
 
   def play_stream(self, mode, channel):
-    return self.keystone._Z10PlayStreamcm(c_char_p(mode), c_long(channel))
+    return self.keystone.PlayStream(c_char_p(mode), c_long(channel))
 
   def stop_stream(self):
-    return self.keystone._Z10StopStreamv()
+    return self.keystone.StopStream()
 
-  def volumne_plus(self):
-    return self.keystone._Z10VolumnPlusv()
+  def volume_plus(self):
+    return self.keystone.VolumnPlus()
 
   def volume_minus(self):
-    return self.keystone._Z11VolumeMinusv()
+    return self.keystone.VolumeMinus()
 
   def volume_mute(self):
-    self.keystone._Z10VolumeMutev()
+    self.keystone.VolumeMute()
 
   def get_volume(self):
-    return self.keystone._Z9GetVolumev()
+    return self.keystone.GetVolume()
 
   def get_play_mode(self):
-    return self.keystone._Z11GetPlayModev()
+    return self.keystone.GetPlayMode()
 
   def get_play_status(self):
-    return self.keystone._Z13GetPlayStatusv()
+    return self.keystone.GetPlayStatus()
   
-  def get_total_programs(self):
-    return self.keystone._Z15GetTotalProgramv()
+  def get_total_program(self):
+    return self.keystone.GetTotalProgram()
   
   def next_stream(self):
-    return self.keystone._Z10NextStreamv()
+    return self.keystone.NextStream()
 
   def prev_stream(self):
-    return self.keystone._Z10PrevStreamv()
+    return self.keystone.PrevStream()
 
   def get_play_index(self):
-    return self.keystone._Z12GetPlayIndexv()
+    return self.keystone.GetPlayIndex()
 
   def get_signal_strength(self):
     return False
@@ -79,51 +74,51 @@ class Interface:
 
   def get_program_text(self):
     buf = create_unicode_buffer(300)
-    if self.keystone._Z14GetProgramTextPw(buf) == 0:
+    if self.keystone.GetProgramText(buf) == 0:
       return buf.value.strip()
     else:
       return None
 
   def get_program_name(self, mode, index, namemode):
     buf = create_unicode_buffer(300)
-    if self.keystone._Z14GetProgramNameclcPw(c_char_p(mode), c_long(index), c_char_p(namemode), buf):
+    if self.keystone.GetProgramName(c_char_p(mode), c_long(index), c_char_p(namemode), buf):
       return buf.value.strip()
     else:
       return ""
 
   def get_preset(self, mode, index):
-    return self.keystone._Z9GetPresetcc(c_char_p(mode), c_char_p(index))
+    return self.keystone.GetPresetcc(c_char_p(mode), c_char_p(index))
 
   def set_preset(self, mode, index, channel):
-    return self.keystone._Z9SetPresetccm(c_char_p(mode), c_char_p(index), c_long(channel))
+    return self.keystone.SetPresetccm(c_char_p(mode), c_char_p(index), c_long(channel))
 
   def dab_auto_search(self, start_index, end_index):
-    return self.keystone._Z13DABAutoSearchhh(c_char_p(start_index), c_char_p(end_index))
+    return self.keystone.DABAutoSearchhh(c_char_p(start_index), c_char_p(end_index))
 
   def dab_auto_search_no_clear(self, start_index, end_index):
-    return self.keystone._Z20DABAutoSearchNoClearhh(c_char_p(start_index), c_char_p(end_index))
+    return self.keystone.DABAutoSearchNoClear(c_char_p(start_index), c_char_p(end_index))
 
   def get_ensemble_name(self, index, namemode):
     buf = create_unicode_buffer(300)
-    if self.keystone._Z15GetEnsembleNamelcPw(c_long(index), c_char_p(namemode), buf):
+    if self.keystone.GetEnsembleName(c_long(index), c_char_p(namemode), buf):
       return buf.value.strip()
     else:
       return ""
 
   def get_data_rate(self):
-    return self.keystone._Z11GetDataRatev()
+    return self.keystone.GetDataRate()
 
   def set_stereo_mode(self, mode):
-    return self.keystone._Z13SetStereoModec(c_char_p(mode))
+    return self.keystone.SetStereoMode(c_char_p(mode))
 
   def get_frequency(self):
-    return self.keystone._Z12GetFrequencyv()
+    return self.keystone.GetFrequency()
 
   def get_stereo_mode(self):
-    return self.keystone._Z13GetStereoModev()
+    return self.keystone.GetStereoMode()
 
   def clear_database(self):
-    return self.keystone._Z13ClearDatabasev()
+    return self.keystone.ClearDatabase()
 
   def set_bbeeq(self):
     return False
@@ -132,19 +127,19 @@ class Interface:
     return False
 
   def set_headroom(self, headroom):
-    return self.keystone._Z11SetHeadroomc(c_char_p(headroom))
+    return self.keystone.SetHeadroom(c_char_p(headroom))
 
   def get_headroom(self):
-    return self.keystone._Z11GetHeadroomv()
+    return self.keystone.GetHeadroom()
 
   def get_application_type(self, index):
-    return self.keystone._Z18GetApplicationTypel(c_long(index))
+    return self.keystone.GetApplicationType(c_long(index))
 
   def get_program_info(self):
     return False
 
   def mot_query(self):
-    return self.keystone._Z8MotQueryv()
+    return self.keystone.MotQuery()
 
   def get_image(self):
     return False
@@ -153,4 +148,4 @@ class Interface:
     return False
 
   def get_dab_signal_quality(self):
-    return self.keystone._Z19GetDABSignalQualityv()
+    return self.keystone.GetDABSignalQuality()

@@ -1,6 +1,6 @@
 from keystone.operation_failed_error import OperationFailedError
 
-class Program:
+class Program(object):
   def __init__(self, radio, mode, index):
     self.radio = radio
     self.interface = radio.interface

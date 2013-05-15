@@ -4,7 +4,7 @@ from keystone.program import Program
 from keystone.invalid_device_error import InvalidDeviceError
 from keystone.operation_failed_error import OperationFailedError
 
-class Radio:
+class Radio(object):
   def __init__(self, device, mode = DAB, usehardmute = True):
     self.interface = Interface()
     self.device = device
@@ -43,7 +43,7 @@ class Radio:
 
   @property
   def volume(self):
-    return self.interface.get_volume
+    return self.interface.get_volume()
 
   @volume.setter
   def volume(self, value):
@@ -59,14 +59,6 @@ class Radio:
   def next_stream(self):
     if self.interface.next_stream != True:
       raise OperationFailedError("Could not select the next stream")
-
-  @property
-  def mode(self):
-    return self.mode
-
-  @mode.setter
-  def mode(self, value):
-    self.mode = value    
 
   @property
   def status(self):

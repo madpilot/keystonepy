@@ -186,7 +186,7 @@ class Interface:
         return buf.value.strip()
 
     def mot_reset(self, mode):
-        self.keystone.mot_reset(c_int_p(mode))
+        self.keystone.MotReset(c_int(mode))
 
     def get_dab_signal_quality(self):
         return self.keystone.GetDABSignalQuality()

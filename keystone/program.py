@@ -57,10 +57,20 @@ class Program(object):
 
     def mot_query(self):
         """
-        Setup for a Mot query. Call this before requesting an image
+        Query Mot to get images and other interesting files
+        Returns True if successful, False if not
         """
-        if self.mot_query() == False:
-            raise OperationFailedError("Mot Query failed")
+        return self.interface.mot_query()
+
+    def mot_reset(self, mode):
+        """
+        Resets the Mot state
+
+        Keyword arguments: 
+        mode: MOT_HEADER_MODE or MOT_DIRECTORY_MODE
+        """
+        self.interface.mot_reset(mode)
+
 
     @property
     def image(self):

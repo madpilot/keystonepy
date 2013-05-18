@@ -1,6 +1,8 @@
 from ctypes import *
 from ctypes.util import *
-from keystone import library_not_installed_error
+from keystone.library_not_installed_error import LibraryNotInstalledError
+from keystone.program_info import ProgramInfo
+from keystone.signal_strength import SignalStrength
 
 class Interface:
     def __init__(self):
@@ -67,10 +69,12 @@ class Interface:
         return self.keystone.GetPlayIndex()
 
     def get_signal_strength(self):
-        return False
+        error = pointer(c_int(0))
+        strength = self.keystone.GetSignalStrength(error)
+        return SignalStrength(strength, error)
 
-    def get_program_type(self):
-        return False
+    def get_program_type(self, mode, index):
+        return self.keystone.GetProgramType(c_char_p(mode), c_long_p(index))
 
     def get_program_text(self):
         buf = create_unicode_buffer(300)
@@ -120,10 +124,38 @@ class Interface:
     def clear_database(self):
         return self.keystone.ClearDatabase()
 
-    def set_bbeeq(self):
-        return False
+    def set_bbeeq(self, bbe):
+        return self.keystone.SetBBEEQ(
+            c_char_p(bbe.on),
+            c_char_p(bbe.eq_mode),
+            c_char_p(bbe.lo),
+            c_char_p(bbe.hi),
+            c_char_p(bbe.freq),
+            c_char_p(bbe.mach_freq),
+            c_char_p(bbe.mach_gain),
+            c_char_p(bbe.mach_q),
+            c_char_p(bbe.surr),
+            c_char_p(bbp.mp),
+            c_char_p(bbe.hpf),
+            c_char_p(bbe.hi_ode))
 
     def get_bbeeq(self):
+        on = create_unicode_buffer(1) 
+        eq_mode = create_unicode_buffer(1) 
+        lo = create_unicode_buffer(1) 
+        hi = create_unicode_buffer(1) 
+        freq = create_unicode_buffer(1) 
+        mach_freq = create_unicode_buffer(1) 
+        mach_gain = create_unicode_buffer(1) 
+        mach_q = create_unicode_buffer(1) 
+        surr = create_unicode_buffer(1) 
+        mp = create_unicode_buffer(1) 
+        hpf = create_unicode_buffer(1) 
+        hi_ode = create_unicode_buffer(1) 
+
+        if self.keystone.getBBEEQ(on, eq_mode, lo, hi, freq, mach_freq, mach_gain, mach_q, surr, mp, hpf, hi_ode):
+            return BBEEQ(on.value(), eq_mode.value(), lo.value(), hi.value(), freq.value(), mach_freq.value(), mach_gain.value(), mach_q.value(), surr.value(), mp.value(), hpf.value(), hi_ode.value())
+
         return False
 
     def set_headroom(self, headroom):
@@ -135,17 +167,26 @@ class Interface:
     def get_application_type(self, index):
         return self.keystone.GetApplicationType(c_long(index))
 
-    def get_program_info(self):
-        return False
+    def get_program_info(self, index):
+        service_component_id = create_unicode_buffer(300)
+        service_id = pointer(c_int(0))
+        ensemble_id = pointer(c_int(0))
+        
+        if self.keystone.GetProgramInfo(index, service_component_id, service_id, ensemble_id):
+            return ProgramInfo(service_component_id.value.strip(), service_id[0], ensemble_id[0])
+        else:
+            return False
 
     def mot_query(self):
         return self.keystone.MotQuery()
 
     def get_image(self):
-        return False
+        buf = create_unicode_buffer(300)
+        self.keystone.GetImage(buf)
+        return buf.value.strip()
 
-    def mot_reset(self):
-        return False
+    def mot_reset(self, mode):
+        self.keystone.mot_reset(c_int_p(mode))
 
     def get_dab_signal_quality(self):
         return self.keystone.GetDABSignalQuality()

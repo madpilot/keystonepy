@@ -1,4 +1,5 @@
 from keystone.operation_failed_error import OperationFailedError
+import os
 
 class Program(object):
     def __init__(self, radio, mode, index):
@@ -34,3 +35,25 @@ class Program(object):
     @property
     def application_type(self):
         return self.interface.get_application_type(self.index)
+
+    @property
+    def info(self):
+        return self.interface.get_program_info(self.index)
+
+    def mot_query(self):
+      if self.mot_query() == False:
+        raise OperationFailedError("Mot Query failed")
+
+    @property
+    def image(self):
+        filename = self.interface.get_image()
+        img = None
+        f = open(filename, 'r')
+        img = f.read()
+        f.close()
+        os.unlink(filename)
+        return img
+
+    @property
+    def image_filename(self):
+        return self.interface.get_image()

@@ -60,6 +60,37 @@ class Radio(object):
         if self.interface.next_stream != True:
             raise OperationFailedError("Could not select the next stream")
 
+    def dab_auto_search(self, start_index, end_index, clear = True):
+      if clear:
+        if self.interface.dab_auto_search(start_index, end_index) == False:
+          raise OperationFailedError("Auto-search failed")
+      else:
+        if self.interface.dab_auto_search_no_clear(start_index, end_index) == False:
+          raise OperationFailedError("Auto-search failed")
+
+    def ensemble_name(self, index, namemode):
+      return self.interface.get_ensemble_name(index, namemode)
+
+    def clear_database(self):
+      if self.interface.clear_database() == False:
+        raise OperationFailedError("Clear database failed")
+
+    @property
+    def bbeeq(self):
+      return self.interface.get_bbeeq()
+
+    @bbeeq.setter
+    def bbeeq(self, bbe):
+      self.interface.set_bbeeq(bbe)
+
+    @property
+    def headroom(self):
+      return self.interface.get_headroom()
+
+    @headroom.setter
+    def headroom(self, headroom):
+      self.interface.set_headroom(headroom)
+
     @property
     def status(self):
         return self.interface.get_play_status()
@@ -78,6 +109,10 @@ class Radio(object):
             self.interface.set_stereo_mode(1)
         else:
             self.interface.set_stereo_mode(0)
+
+    @property
+    def signal_strength(self):
+        return self.interface.get_signal_strength()
 
     @property
     def dab_signal_quality(self):

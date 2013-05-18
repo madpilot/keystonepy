@@ -6,7 +6,6 @@ with radio.Radio("/dev/ttyACM0") as r:
     r.stereo = True
 
     program.play()
-    
     print "Now playing: " + program.name
     while True:
         if r.status != -1:
@@ -14,3 +13,5 @@ with radio.Radio("/dev/ttyACM0") as r:
 
             if text != None:
                 print text
+                print "Signal strength " + str(r.signal_strength.strength)
+

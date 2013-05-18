@@ -14,7 +14,7 @@ The library is made of two parts: an unpythonic-style interface, that is a basic
   git clone git@github.com:madpilot/keystonepy.git
   ```
 3. Run
-  ```bash
+  ```
   sudo python setup.py install
   ```
 

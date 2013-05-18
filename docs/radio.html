@@ -1,0 +1,151 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module radio</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>radio</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/myles/Projects/pykeystone/keystone/radio.py">/home/myles/Projects/pykeystone/keystone/radio.py</a></font></td></tr></table>
+    <p></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="__builtin__.html#object">__builtin__.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="radio.html#Radio">Radio</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Radio">class <strong>Radio</strong></a>(<a href="__builtin__.html#object">__builtin__.object</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Radio-__enter__"><strong>__enter__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Radio-__exit__"><strong>__exit__</strong></a>(self, type, value, traceback)</dt></dl>
+
+<dl><dt><a name="Radio-__init__"><strong>__init__</strong></a>(self, device, mode<font color="#909090">=0</font>, usehardmute<font color="#909090">=True</font>)</dt><dd><tt>Initializes&nbsp;the&nbsp;<a href="#Radio">Radio</a>&nbsp;<a href="__builtin__.html#object">object</a>.<br>
+&nbsp;<br>
+Keyword&nbsp;arguments:<br>
+&nbsp;<br>
+device&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;Path&nbsp;to&nbsp;the&nbsp;serial&nbsp;device.&nbsp;eg&nbsp;/dev/ttyACM0<br>
+mode&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;Either&nbsp;the&nbsp;DAB&nbsp;or&nbsp;FM&nbsp;constant&nbsp;(Note:&nbsp;FM&nbsp;is&nbsp;not&nbsp;implemented&nbsp;yet)&nbsp;(default:&nbsp;DAB)<br>
+userhardmute&nbsp;--&nbsp;Use&nbsp;hard&nbsp;mute.&nbsp;Boolean&nbsp;(default:&nbsp;True)</tt></dd></dl>
+
+<dl><dt><a name="Radio-clear_database"><strong>clear_database</strong></a>(self)</dt><dd><tt>Clear&nbsp;the&nbsp;internal&nbsp;radio&nbsp;database.&nbsp;This&nbsp;probably&nbsp;clears&nbsp;the&nbsp;channel&nbsp;list&nbsp;and&nbsp;any&nbsp;presets...<br>
+&nbsp;<br>
+Raises&nbsp;OperationFailedError&nbsp;if&nbsp;the&nbsp;database&nbsp;couldn't&nbsp;be&nbsp;cleared</tt></dd></dl>
+
+<dl><dt><a name="Radio-close"><strong>close</strong></a>(self)</dt><dd><tt>Close&nbsp;the&nbsp;radio&nbsp;port.&nbsp;You&nbsp;only&nbsp;need&nbsp;to&nbsp;do&nbsp;this&nbsp;if&nbsp;your&nbsp;call&nbsp;open&nbsp;explicitly</tt></dd></dl>
+
+<dl><dt><a name="Radio-comm_version"><strong>comm_version</strong></a>(self)</dt><dd><tt>Returns&nbsp;the&nbsp;version&nbsp;of&nbsp;the&nbsp;communication&nbsp;protocol.&nbsp;Possibly&nbsp;not&nbsp;that&nbsp;interesting&nbsp;in&nbsp;everyday&nbsp;use.</tt></dd></dl>
+
+<dl><dt><a name="Radio-dab_auto_search"><strong>dab_auto_search</strong></a>(self, start_index, end_index, clear<font color="#909090">=True</font>)</dt><dd><tt>Searches&nbsp;for&nbsp;radio&nbsp;programs<br>
+&nbsp;<br>
+Keyword&nbsp;arguments:<br>
+&nbsp;<br>
+start_index:&nbsp;DAB&nbsp;index&nbsp;to&nbsp;start&nbsp;searching&nbsp;from.&nbsp;0&nbsp;is&nbsp;probably&nbsp;a&nbsp;good&nbsp;start.<br>
+end_index:&nbsp;DAB&nbsp;index&nbsp;to&nbsp;end&nbsp;searching&nbsp;to.&nbsp;40&nbsp;is&nbsp;a&nbsp;nice&nbsp;number<br>
+clear:&nbsp;If&nbsp;True,&nbsp;the&nbsp;internal&nbsp;channel&nbsp;table&nbsp;will&nbsp;be&nbsp;cleared&nbsp;before&nbsp;the&nbsp;search&nbsp;starts.&nbsp;(default:&nbsp;True)<br>
+&nbsp;<br>
+Raises&nbsp;OperationFailedError&nbsp;if&nbsp;the&nbsp;previous&nbsp;stream&nbsp;can't&nbsp;be&nbsp;selected</tt></dd></dl>
+
+<dl><dt><a name="Radio-ensemble_name"><strong>ensemble_name</strong></a>(self, index, namemode)</dt><dd><tt>Returns&nbsp;the&nbsp;ensemble&nbsp;name&nbsp;of&nbsp;the&nbsp;ensemble&nbsp;at&nbsp;the&nbsp;supplied&nbsp;index.<br>
+&nbsp;<br>
+Keyword&nbsp;arguments:<br>
+&nbsp;<br>
+index:&nbsp;DAB&nbsp;index&nbsp;to&nbsp;check<br>
+namemode:&nbsp;DAB&nbsp;or&nbsp;FM&nbsp;(only&nbsp;DAB&nbsp;supported&nbsp;at&nbsp;the&nbsp;moment)<br>
+&nbsp;<br>
+Returns&nbsp;the&nbsp;name&nbsp;of&nbsp;the&nbsp;ensemble</tt></dd></dl>
+
+<dl><dt><a name="Radio-is_system_ready"><strong>is_system_ready</strong></a>(self)</dt><dd><tt>Returns&nbsp;true&nbsp;when&nbsp;the&nbsp;radio&nbsp;is&nbsp;ready&nbsp;to&nbsp;accept&nbsp;control&nbsp;messages</tt></dd></dl>
+
+<dl><dt><a name="Radio-mute"><strong>mute</strong></a>(self)</dt><dd><tt>Mutes&nbsp;the&nbsp;radio</tt></dd></dl>
+
+<dl><dt><a name="Radio-next_stream"><strong>next_stream</strong></a>(self)</dt><dd><tt>Plays&nbsp;the&nbsp;next&nbsp;stream&nbsp;in&nbsp;the&nbsp;ensemble<br>
+&nbsp;<br>
+Raises&nbsp;OperationFailedError&nbsp;if&nbsp;the&nbsp;next&nbsp;stream&nbsp;can't&nbsp;be&nbsp;selected</tt></dd></dl>
+
+<dl><dt><a name="Radio-open"><strong>open</strong></a>(self)</dt><dd><tt>Open&nbsp;the&nbsp;radio&nbsp;port.&nbsp;Note&nbsp;if&nbsp;you&nbsp;call&nbsp;open&nbsp;directly,&nbsp;you&nbsp;should&nbsp;call&nbsp;close&nbsp;explicitly.<br>
+The&nbsp;preferred&nbsp;way&nbsp;is&nbsp;to&nbsp;initialize&nbsp;the&nbsp;<a href="__builtin__.html#object">object</a>&nbsp;is:<br>
+&nbsp;<br>
+with&nbsp;radio.<a href="#Radio">Radio</a>("/dev/ttyACM0")&nbsp;as&nbsp;r:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;r.programs<br>
+&nbsp;<br>
+raise&nbsp;InvalidDeviceError&nbsp;if&nbsp;the&nbsp;the&nbsp;path&nbsp;can't&nbsp;be&nbsp;opened&nbsp;for&nbsp;what&nbsp;ever&nbsp;reason</tt></dd></dl>
+
+<dl><dt><a name="Radio-prev_stream"><strong>prev_stream</strong></a>(self)</dt><dd><tt>Plays&nbsp;the&nbsp;previous&nbsp;stream&nbsp;in&nbsp;the&nbsp;ensemble<br>
+&nbsp;<br>
+Raises&nbsp;OperationFailedError&nbsp;if&nbsp;the&nbsp;previous&nbsp;stream&nbsp;can't&nbsp;be&nbsp;selected</tt></dd></dl>
+
+<dl><dt><a name="Radio-reset"><strong>reset</strong></a>(self)</dt><dd><tt>Reset&nbsp;the&nbsp;radio</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>bbeeq</strong></dt>
+<dd><tt>Returns&nbsp;the&nbsp;current&nbsp;bbeeq.&nbsp;Whatever&nbsp;that&nbsp;is.<br>
+&nbsp;<br>
+Returns&nbsp;BBEEQ&nbsp;object</tt></dd>
+</dl>
+<dl><dt><strong>dab_signal_quality</strong></dt>
+<dd><tt>Returns&nbsp;the&nbsp;current&nbsp;DAB&nbsp;signal&nbsp;quality.&nbsp;Possibly&nbsp;in&nbsp;dB?<br>
+&nbsp;<br>
+TODO:&nbsp;Find&nbsp;out</tt></dd>
+</dl>
+<dl><dt><strong>data_rate</strong></dt>
+<dd><tt>Returns&nbsp;the&nbsp;current&nbsp;data&nbsp;rate&nbsp;(in&nbsp;kbs)</tt></dd>
+</dl>
+<dl><dt><strong>headroom</strong></dt>
+<dd><tt>Returns&nbsp;the&nbsp;current&nbsp;headroom</tt></dd>
+</dl>
+<dl><dt><strong>programs</strong></dt>
+<dd><tt>Returns&nbsp;a&nbsp;list&nbsp;of&nbsp;Program&nbsp;objects<br>
+&nbsp;<br>
+Programs&nbsp;refer&nbsp;to&nbsp;actual&nbsp;stations</tt></dd>
+</dl>
+<dl><dt><strong>signal_strength</strong></dt>
+<dd><tt>Returns&nbsp;the&nbsp;current&nbsp;signal&nbsp;strength&nbsp;(0-100)</tt></dd>
+</dl>
+<dl><dt><strong>status</strong></dt>
+<dd><tt>Returns&nbsp;the&nbsp;current&nbsp;play&nbsp;status<br>
+&nbsp;<br>
+TODO:&nbsp;Work&nbsp;out&nbsp;what&nbsp;the&nbsp;values&nbsp;are</tt></dd>
+</dl>
+<dl><dt><strong>stereo</strong></dt>
+<dd><tt>Returns&nbsp;True&nbsp;if&nbsp;the&nbsp;stream&nbsp;is&nbsp;stereo</tt></dd>
+</dl>
+<dl><dt><strong>volume</strong></dt>
+<dd><tt>Returns&nbsp;the&nbsp;current&nbsp;volume.&nbsp;Range:&nbsp;0-16</tt></dd>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>DAB</strong> = 0<br>
+<strong>FM</strong> = 1<br>
+<strong>MOT_DIRECTORY_MODE</strong> = 1<br>
+<strong>MOT_HEADER_MODE</strong> = 0</td></tr></table>
+</body></html>

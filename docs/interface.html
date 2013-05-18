@@ -1,0 +1,172 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module interface</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>interface</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/myles/Projects/pykeystone/keystone/interface.py">/home/myles/Projects/pykeystone/keystone/interface.py</a></font></td></tr></table>
+    <p></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="errno.html">errno</a><br>
+<a href="os.html">os</a><br>
+</td><td width="25%" valign=top><a href="re.html">re</a><br>
+<a href="sys.html">sys</a><br>
+</td><td width="25%" valign=top><a href="tempfile.html">tempfile</a><br>
+<a href="ctypes.util.html">ctypes.util</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="interface.html#Interface">Interface</a>
+</font></dt></dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Interface">class <strong>Interface</strong></a></font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Interface-__init__"><strong>__init__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Interface-clear_database"><strong>clear_database</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Interface-close_radio_port"><strong>close_radio_port</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Interface-comm_version"><strong>comm_version</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Interface-dab_auto_search"><strong>dab_auto_search</strong></a>(self, start_index, end_index)</dt></dl>
+
+<dl><dt><a name="Interface-dab_auto_search_no_clear"><strong>dab_auto_search_no_clear</strong></a>(self, start_index, end_index)</dt></dl>
+
+<dl><dt><a name="Interface-get_application_type"><strong>get_application_type</strong></a>(self, index)</dt></dl>
+
+<dl><dt><a name="Interface-get_bbeeq"><strong>get_bbeeq</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Interface-get_dab_signal_quality"><strong>get_dab_signal_quality</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Interface-get_data_rate"><strong>get_data_rate</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Interface-get_ensemble_name"><strong>get_ensemble_name</strong></a>(self, index, namemode)</dt></dl>
+
+<dl><dt><a name="Interface-get_frequency"><strong>get_frequency</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Interface-get_headroom"><strong>get_headroom</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Interface-get_image"><strong>get_image</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Interface-get_play_index"><strong>get_play_index</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Interface-get_play_mode"><strong>get_play_mode</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Interface-get_play_status"><strong>get_play_status</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Interface-get_preset"><strong>get_preset</strong></a>(self, mode, index)</dt></dl>
+
+<dl><dt><a name="Interface-get_program_info"><strong>get_program_info</strong></a>(self, index)</dt></dl>
+
+<dl><dt><a name="Interface-get_program_name"><strong>get_program_name</strong></a>(self, mode, index, namemode)</dt></dl>
+
+<dl><dt><a name="Interface-get_program_text"><strong>get_program_text</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Interface-get_program_type"><strong>get_program_type</strong></a>(self, mode, index)</dt></dl>
+
+<dl><dt><a name="Interface-get_signal_strength"><strong>get_signal_strength</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Interface-get_stereo_mode"><strong>get_stereo_mode</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Interface-get_total_program"><strong>get_total_program</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Interface-get_volume"><strong>get_volume</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Interface-hard_reset_radio"><strong>hard_reset_radio</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Interface-is_sys_ready"><strong>is_sys_ready</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Interface-mot_query"><strong>mot_query</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Interface-mot_reset"><strong>mot_reset</strong></a>(self, mode)</dt></dl>
+
+<dl><dt><a name="Interface-next_stream"><strong>next_stream</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Interface-open_radio_port"><strong>open_radio_port</strong></a>(self, device, usehardmute<font color="#909090">=True</font>)</dt></dl>
+
+<dl><dt><a name="Interface-play_stream"><strong>play_stream</strong></a>(self, mode, channel)</dt></dl>
+
+<dl><dt><a name="Interface-prev_stream"><strong>prev_stream</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Interface-set_bbeeq"><strong>set_bbeeq</strong></a>(self, bbe)</dt></dl>
+
+<dl><dt><a name="Interface-set_headroom"><strong>set_headroom</strong></a>(self, headroom)</dt></dl>
+
+<dl><dt><a name="Interface-set_preset"><strong>set_preset</strong></a>(self, mode, index, channel)</dt></dl>
+
+<dl><dt><a name="Interface-set_stereo_mode"><strong>set_stereo_mode</strong></a>(self, mode)</dt></dl>
+
+<dl><dt><a name="Interface-set_volume"><strong>set_volume</strong></a>(self, level)</dt></dl>
+
+<dl><dt><a name="Interface-stop_stream"><strong>stop_stream</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Interface-volume_minus"><strong>volume_minus</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Interface-volume_mute"><strong>volume_mute</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Interface-volume_plus"><strong>volume_plus</strong></a>(self)</dt></dl>
+
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-POINTER"><strong>POINTER</strong></a>(...)</dt></dl>
+ <dl><dt><a name="-addressof"><strong>addressof</strong></a>(...)</dt><dd><tt><a href="#-addressof">addressof</a>(C&nbsp;instance)&nbsp;-&gt;&nbsp;integer<br>
+Return&nbsp;the&nbsp;address&nbsp;of&nbsp;the&nbsp;C&nbsp;instance&nbsp;internal&nbsp;buffer</tt></dd></dl>
+ <dl><dt><a name="-alignment"><strong>alignment</strong></a>(...)</dt><dd><tt><a href="#-alignment">alignment</a>(C&nbsp;type)&nbsp;-&gt;&nbsp;integer<br>
+<a href="#-alignment">alignment</a>(C&nbsp;instance)&nbsp;-&gt;&nbsp;integer<br>
+Return&nbsp;the&nbsp;alignment&nbsp;requirements&nbsp;of&nbsp;a&nbsp;C&nbsp;instance</tt></dd></dl>
+ <dl><dt><a name="-byref"><strong>byref</strong></a>(...)</dt><dd><tt><a href="#-byref">byref</a>(C&nbsp;instance[,&nbsp;offset=0])&nbsp;-&gt;&nbsp;byref-object<br>
+Return&nbsp;a&nbsp;pointer&nbsp;lookalike&nbsp;to&nbsp;a&nbsp;C&nbsp;instance,&nbsp;only&nbsp;usable<br>
+as&nbsp;function&nbsp;argument</tt></dd></dl>
+ <dl><dt><a name="-get_errno"><strong>get_errno</strong></a>(...)</dt></dl>
+ <dl><dt><a name="-pointer"><strong>pointer</strong></a>(...)</dt></dl>
+ <dl><dt><a name="-resize"><strong>resize</strong></a>(...)</dt><dd><tt>Resize&nbsp;the&nbsp;memory&nbsp;buffer&nbsp;of&nbsp;a&nbsp;ctypes&nbsp;instance</tt></dd></dl>
+ <dl><dt><a name="-set_conversion_mode"><strong>set_conversion_mode</strong></a>(...)</dt><dd><tt><a href="#-set_conversion_mode">set_conversion_mode</a>(encoding,&nbsp;errors)&nbsp;-&gt;&nbsp;(previous-encoding,&nbsp;previous-errors)<br>
+&nbsp;<br>
+Set&nbsp;the&nbsp;encoding&nbsp;and&nbsp;error&nbsp;handling&nbsp;ctypes&nbsp;uses&nbsp;when&nbsp;converting<br>
+between&nbsp;unicode&nbsp;and&nbsp;strings.&nbsp;&nbsp;Returns&nbsp;the&nbsp;previous&nbsp;values.</tt></dd></dl>
+ <dl><dt><a name="-set_errno"><strong>set_errno</strong></a>(...)</dt></dl>
+ <dl><dt><a name="-sizeof"><strong>sizeof</strong></a>(...)</dt><dd><tt><a href="#-sizeof">sizeof</a>(C&nbsp;type)&nbsp;-&gt;&nbsp;integer<br>
+<a href="#-sizeof">sizeof</a>(C&nbsp;instance)&nbsp;-&gt;&nbsp;integer<br>
+Return&nbsp;the&nbsp;size&nbsp;in&nbsp;bytes&nbsp;of&nbsp;a&nbsp;C&nbsp;instance</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>DEFAULT_MODE</strong> = 0<br>
+<strong>RTLD_GLOBAL</strong> = 256<br>
+<strong>RTLD_LOCAL</strong> = 0<br>
+<strong>cdll</strong> = &lt;ctypes.LibraryLoader object&gt;<br>
+<strong>memmove</strong> = &lt;CFunctionType object&gt;<br>
+<strong>memset</strong> = &lt;CFunctionType object&gt;<br>
+<strong>pydll</strong> = &lt;ctypes.LibraryLoader object&gt;<br>
+<strong>pythonapi</strong> = &lt;PyDLL 'None', handle 7ff109d6b268 at 7ff108a84a90&gt;</td></tr></table>
+</body></html>

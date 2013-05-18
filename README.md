@@ -18,10 +18,10 @@ The library is made of two parts: an unpythonic-style interface, that is a basic
   sudo python setup.py install
   ```
 
-## Including the library
+## Using the library
 
 ```python
-from keystone import *
+from keystone.radio import Radio
 
 with radio.Radio("/dev/ttyACM0") as r:
     # Select the fourth program from the ensemble
@@ -47,3 +47,22 @@ with radio.Radio("/dev/ttyACM0") as r:
         if text != None:
           print text
 ```
+
+## Notes
+
+1. I've only tested this on Linux, as I don't have access to a Windows machine with Python on it at the moment. It *should* work on Windows, and if it doesn't, it should be a minor fix. If you are a Windows user and know Python, feel free to fork and fix.
+2. Not all of the methods have been tested fully. I'm working on this. Again, if you feel adventurous fork, test and patch away.
+3. This is literally the second piece of Python I've ever written. If I've done something wrong, let me know.
+
+## Contributing to keystonepy
+ 
+* Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet.
+* Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it.
+* Fork the project.
+* Start a feature/bugfix branch.
+* Commit and push until you are happy with your contribution.
+* Please try not to mess with the VERSION file. If you want to have your own version, or is otherwise necessary, that is fine, but please isolate to its own commit so I can cherry-pick around it.
+
+## Copyright
+
+Copyright (c) 2013 [MadPilot Productions](http://www.madpilot.com.au/). See LICENSE.txt for further details.

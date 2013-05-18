@@ -48,6 +48,13 @@ with radio.Radio("/dev/ttyACM0") as r:
           print text
 ```
 
+## Documentation
+
+It's ugly, but it's here:
+
+http://htmlpreview.github.io/?https://github.com/madpilot/keystonepy/blob/master/docs/radio.html
+http://htmlpreview.github.io/?https://github.com/madpilot/keystonepy/blob/master/docs/program.html
+
 ## Notes
 
 1. I've only tested this on Linux, as I don't have access to a Windows machine with Python on it at the moment. It *should* work on Windows, and if it doesn't, it should be a minor fix. If you are a Windows user and know Python, feel free to fork and fix.

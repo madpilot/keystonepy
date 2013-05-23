@@ -6,7 +6,7 @@ The library is made of two parts: an unpythonic-style interface, that is a basic
 
 ## Setup
 
-*Please note* This library requires the latest libkeystonecomm.so file, which has correctly exported library functions. We'll tell you how to check after the new version is released :)
+*Please note* This library requires the latest libkeystonecomm.so file, which has correctly exported library functions. If you haven't downloaded the library recently, so and [do it now](http://www.monkeyboard.org/tutorials/78-interfacing/87-raspberry-pi-linux-dab-fm-digital-radio)
 
 1. Download and Install the libkeystonecomm.so as per these [instructions](http://www.monkeyboard.org/tutorials/78-interfacing/87-raspberry-pi-linux-dab-fm-digital-radio)
 2. Download this library
